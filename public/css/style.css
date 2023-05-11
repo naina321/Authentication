@@ -3,21 +3,18 @@ body {
   overflow: hidden;
 }
 .centered {
-  /* border: 2px solid black; */
   text-align: center;
 }
 .secret-text {
   text-align: center;
   font-size: 2rem;
   color: #fff;
-  background-color: #440749;
+  background-color: #000000;
 }
 .jumbotron {
   height: 100vh;
 }
 .container {
-  /* border: 2px solid black; */
   top: 25%;
   position: relative;
-  /* margin-top: 20vh; */
 }
