@@ -23,7 +23,7 @@ app.get("/", (req, res) => {
 
 app.post("/register", (req, res) => {
   const newUser = new item({
-    email: req.body.username,
+    email: req.body.email,
     password: req.body.password,
   });
   newUser.save();
@@ -36,17 +36,14 @@ app.get("/register", (req, res) => {
 
 app.post("/login", async (req, res) => {
   try {
-    const username = req.body.userName;
+    const username = req.body.email;
     const password = req.body.password;
-    await item.findOne({ email: username }, (err, foundUser) => {
-      if (err) console.log(err);
-      else {
-        if (foundUser) {
-          if (foundUser.password === password) res.render("partials/secrets");
-          else res.send("possword is incorrect");
-        } else res.send("user does not exist!!");
-      }
-    });
+    const foundUser = await item.findOne({ email: username });
+    console.log(foundUser);
+    if (foundUser) {
+      if (foundUser.password === password) res.render("partials/secrets");
+      else res.send("possword is incorrect");
+    } else res.send("user does not exist!!");
   } catch (error) {
     console.log(error);
   }
